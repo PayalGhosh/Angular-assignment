@@ -8,3 +8,9 @@
 h2 {
     padding: 30px;
 }
+.field-error{
+    border:1px solid red;
+}
+.alert{
+    margin-top:5px;
+}

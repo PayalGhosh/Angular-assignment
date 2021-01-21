@@ -9,7 +9,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class DataService {
 
-  private _url : string = "src\assets\dbconn\dat.json";
 
   constructor(private http:HttpClient) { }
 

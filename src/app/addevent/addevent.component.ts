@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
 import { DataService } from '../data/data.service';
 import { Event } from '../data/Event';
 
@@ -10,15 +11,19 @@ import { Event } from '../data/Event';
 export class AddeventComponent implements OnInit {
 
   event:Event={
-    end_date:null,
     name:null,
-    revenue:null,
-    st_date:null
+    startDate:null,
+    endDate:null,    
+    revenue:null
   };
 
   constructor(private dataService:DataService) { }
 
   ngOnInit() {
+  }
+
+  checkValidations(form : NgForm){
+      console.log(form.valid);
   }
 
   onSubmit(){
