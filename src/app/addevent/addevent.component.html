@@ -1,0 +1,48 @@
+
+<div class="container addevent">
+    <h2 class="text-center">Add Event</h2>
+    <form #eventform="ngForm" (ngSubmit)="onSubmit()">
+        <!-- {{event | json}} -->
+          <div class="form-group row">
+              <label for="inputEvent" class="col-sm-2 col-form-label">Event Name</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" name="name" id="inputEvent" placeholder="Enter Event Name" [(ngModel)]="event.name" required #nameField = "ngModel" [class.field-error]="eventform.submitted && nameField.invalid">
+                  <!-- <div [hidden]="!eventform.submitted || nameField.valid" class="alert alert-danger">Please enter event name</div> -->
+              </div>
+          </div>
+          <div class="form-group row">
+            <label for="startDate" class="col-sm-2 col-form-label">Start Date:</label>
+            <div class="col-sm-3">
+                <input type="date" class="form-control" id="startDate" name="st_date" [(ngModel)]="event.startDate" required #startDateField="ngModel" [class.field-error]="eventform.submitted && startDateField.invalid">
+                <!-- <div [hidden]="!eventform.submitted || startDateField.valid" class="alert alert-danger">Please enter event start date</div> -->
+            </div>
+            <label for="endDate" class="col-sm-2 col-form-label offset-sm-2">End Date:</label>
+            <div class="col-sm-3">
+                <input type="date" class="form-control" id="endDate" name="end_date" [(ngModel)]="event.endDate" required #endDateField="ngModel" [class.field-error]="eventform.submitted && endDateField.invalid">
+                <!-- <div [hidden]="!eventform.submitted || endDateField.valid" class="alert alert-danger">Please enter event end date</div> -->
+            </div>
+          </div>
+          <!-- {{endDateField.class}} -->
+          <!-- <div [hidden]="!eventform.submitted || {{event.endDate>event.startDate}}" class="alert alert-danger">Start date should come before end Date</div> -->
+          <div class="form-group row">
+              <label for="inputRevenue" class="col-sm-2 col-form-label">Revenue</label>
+              <div class="col-sm-10">
+                  <input type="text" class="form-control" id="inputRevenue" name="revenue" placeholder="Enter Revenue" [(ngModel)]="event.revenue" required #revenueField="ngModel" [class.field-error]="eventform.submitted && revenueField.invalid">
+                  <!-- <div [hidden]="!eventform.submitted || revenueField.valid" class="alert alert-danger">Please enter event revenue</div> -->
+              </div>
+          </div>
+
+          <div *ngIf="error.isError" class="alert alert-danger alert-dismissible fade show" role="alert">
+            <strong>{{error.errorMessage}}</strong>
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+
+          <div class="form-group row">
+              <div class="col-sm-10 offset-sm-2">
+                  <button class="btn btn-primary" type="submit" [disabled]="!yourForm.form.valid">Add</button>
+              </div>
+          </div>
+  </form>
+</div>
