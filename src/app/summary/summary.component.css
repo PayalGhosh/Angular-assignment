@@ -1,0 +1,36 @@
+.filters-container{
+    display: flex;
+    justify-content: space-around;
+}
+.year-filter , .month-filter{
+    /* display: inline-block; */
+    width:15%;
+    padding: 7px;
+}
+.month-filter{
+    width:70%;
+}
+.year-filter-head , .month-filter-head{
+    background-color: #112130;
+    color: white;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin-top: 20px;
+    border-radius: 7px;
+    padding: 7px;
+}
+.year-filter .y-filter , .m-filter-container{
+    border: 1px solid black;
+    border-radius: 7px;
+    padding: 7px;
+}
+label{
+    display: block;
+}
+.m-filter-container{
+    display: flex;
+    justify-content: space-around;
+}
+table{
+    margin-top: 50px;
+    margin-bottom: 50px;
+}

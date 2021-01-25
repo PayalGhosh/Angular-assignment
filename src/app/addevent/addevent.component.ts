@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
-import { DataService } from '../data/data.service';
 import { Event } from '../data/Event';
+import { EventService } from '../data/event.service';
 
 @Component({
   selector: 'app-addevent',
@@ -21,9 +21,9 @@ export class AddeventComponent implements OnInit {
   isValidDate:any;
   isValidName:any;
   isValidRevenue:any;
-  submitStatus:any;
+  submitStatus:boolean = false;
 
-  constructor(private dataService:DataService) { }
+  constructor(private eventService:EventService) { }
 
   ngOnInit() {
   }
@@ -39,9 +39,10 @@ export class AddeventComponent implements OnInit {
     this.isValidRevenue = this.ValidateRevenue(this.event.revenue);
 
     if(this.isValidDate && this.isValidName && this.isValidRevenue){
-      this.dataService.postEvent(this.event).subscribe(
-        result => console.log('success',result),
-        error => console.log('error',error));
+
+      this.eventService.postEvent(this.event).subscribe(
+        result => this.submitStatus = true,
+        error => this.submitStatus = false);
   }
   }
  
