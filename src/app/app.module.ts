@@ -10,6 +10,7 @@ import { AddeventComponent } from './addevent/addevent.component';
 import { SummaryComponent } from './summary/summary.component';
 import { FormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
+import { JwPaginationComponent } from 'jw-angular-pagination';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HttpClientModule } from '@angular/common/http';
     FooterComponent,
     SidebarComponent,
     AddeventComponent,
-    SummaryComponent
+    SummaryComponent,
+    JwPaginationComponent
   ],
   imports: [
     BrowserModule,

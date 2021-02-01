@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
+import { error } from 'protractor';
 import { Event } from '../data/Event';
 import { EventService } from '../data/event.service';
 
@@ -42,8 +43,18 @@ export class AddeventComponent implements OnInit {
 
       this.eventService.postEvent(this.event).subscribe(
         result => this.submitStatus = true,
-        error => this.submitStatus = false);
+        error => this.handleError(error));
   }
+  }
+  handleError(error: any): void {
+    this.submitStatus = false;
+    if(error==500){
+      this.error={isError:true,errorMessage:'Event Name already exists.Try again with a different name'};
+    }
+    else{
+      this.error={isError:true,errorMessage:'Event not submitted due to network error'};
+    }
+    
   }
  
   

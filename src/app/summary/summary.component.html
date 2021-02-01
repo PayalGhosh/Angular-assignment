@@ -1,84 +1,84 @@
 <div class="filters-container">
     <div class="year-filter">
         <div class="year-filter-head">Year Filter</div>
-        <div class="y-filter">
-            <label>
-                <input type="checkbox" rel="2018" />
-                2018
-            </label>
-            <label>
-                <input type="checkbox" rel="2019" />
-                2019
-            </label>
-            <label>
-                <input type="checkbox" rel="2020" />
-                2020
+        <div class="y-filter" >
+            <label #checkbox *ngFor="let year of years" class="mdl-checkbox mdl-js-checkbox">
+                <input type="checkbox" name="years" [value]="year" (change)="populateYears(year,$event.target.checked)" class="mdl-checkbox__input">
+                {{year}}
             </label>
         </div>
     </div>
+
 
     <div class="month-filter">
         <div class="month-filter-head">Month Filter</div>
         <div class="m-filter-container">
             <div class="m-filter">
                 <label>
-                    <input type="checkbox" rel="January" />
+                    <input type="checkbox" name="months" [value]="JANUARY" (change)="populateMonths('JANUARY',$event.target.checked)" class="mdl-checkbox__input">
                     January
                 </label>
                 <label>
-                    <input type="checkbox" rel="February" />
+                    <input type="checkbox" name="months" [value]="FEBRUARY" (change)="populateMonths('FEBRUARY',$event.target.checked)" class="mdl-checkbox__input">
                     February
                 </label>
                 <label>
-                    <input type="checkbox" rel="March" />
+                    <input type="checkbox" name="months" [value]="MARCH" (change)="populateMonths('MARCH',$event.target.checked)" class="mdl-checkbox__input">
                     March
                 </label>
             </div>
             <div class="m-filter">
                 <label>
-                    <input type="checkbox" rel="April" />
+                   <input type="checkbox" name="months" [value]="APRIL" (change)="populateMonths('APRIL',$event.target.checked)" class="mdl-checkbox__input">
                     April
                 </label>
                 <label>
-                    <input type="checkbox" rel="May" />
+                    <input type="checkbox" name="months" [value]="MAY" (change)="populateMonths('MAY',$event.target.checked)" class="mdl-checkbox__input">
                     May
                 </label>
                 <label>
-                    <input type="checkbox" rel="June" />
+                    <input type="checkbox" name="months" [value]="JUNE" (change)="populateMonths('JUNE',$event.target.checked)" class="mdl-checkbox__input">
                     June
                 </label>
             </div>
             <div class="m-filter">
                 <label>
-                    <input type="checkbox" rel="July" />
+                    <input type="checkbox" name="months" [value]="JULY" (change)="populateMonths('JULY',$event.target.checked)" class="mdl-checkbox__input">
                     July
                 </label>
                 <label>
-                    <input type="checkbox" rel="August" />
+                    <input type="checkbox" name="months" [value]="AUGUST" (change)="populateMonths('AUGUST',$event.target.checked)" class="mdl-checkbox__input">
                     August
                 </label>
                 <label>
-                    <input type="checkbox" rel="September" />
+                    <input type="checkbox" name="months" [value]="SEPTEMBER" (change)="populateMonths('SEPTEMBER',$event.target.checked)" class="mdl-checkbox__input">
                     September
                 </label>
             </div>
             <div class="m-filter">
                 <label>
-                    <input type="checkbox" rel="October" />
+                    <input type="checkbox" name="months" [value]="OCTOBER" (change)="populateMonths('OCTOBER',$event.target.checked)" class="mdl-checkbox__input">
                     October
                 </label>
                 <label>
-                    <input type="checkbox" rel="November" />
+                    <input type="checkbox" name="months" [value]="NOVEMBER" (change)="populateMonths('NOVEMBER',$event.target.checked)" class="mdl-checkbox__input">
                     November
                 </label>
                 <label>
-                    <input type="checkbox" rel="December" />
+                    <input type="checkbox" name="months" [value]="DECEMBER" (change)="populateMonths('DECEMBER',$event.target.checked)" class="mdl-checkbox__input">
                     December
                 </label>
             </div>
         </div>
     </div>
 </div>
+<div class="handleError" *ngIf="error">
+    <h2>Connection to the server failed! </h2>
+</div>
+<div class="handleError" *ngIf="eventGroups.length==0">
+    <h2>No records found!</h2>
+</div>
+<div *ngIf="eventGroups.length>0">
 <table class="table">
     <thead class="thead-dark">
       <tr>
@@ -88,62 +88,17 @@
         <th scope="col">Total Number of Events</th>
       </tr>
     </thead>
-    <tbody *ngFor="let event of eventGroups">
+    <tbody *ngFor="let event of pageOfItems">
       <tr>
         <th scope="row">{{event.month}}</th>
         <td>{{event.year}}</td>
         <td>{{event.revenue}}</td>
-        <td>{{event.no}}</td>
+        <td>{{event.totalNumber}}</td>
       </tr>
-      <!-- <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr>
-      <tr>
-        <th scope="row">1</th>
-        <td>Mark</td>
-        <td>Otto</td>
-        <td>@mdo</td>
-      </tr>
-      <tr>
-        <th scope="row">2</th>
-        <td>Jacob</td>
-        <td>Thornton</td>
-        <td>@fat</td>
-      </tr>
-      <tr>
-        <th scope="row">3</th>
-        <td>Larry</td>
-        <td>the Bird</td>
-        <td>@twitter</td>
-      </tr> -->
     </tbody>
   </table>
+  <jw-pagination [items]="eventGroups" (changePage)="onChangePage($event)"></jw-pagination>
+  </div>
+
   
   

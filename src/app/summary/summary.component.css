@@ -1,10 +1,13 @@
 .filters-container{
     display: flex;
     justify-content: space-around;
+    align-items: center;
+    width:80%;
+    margin-left: 20%;
+    margin-top:120px;
 }
 .year-filter , .month-filter{
-    /* display: inline-block; */
-    width:15%;
+    width:20%;
     padding: 7px;
 }
 .month-filter{
@@ -31,6 +34,19 @@ label{
     justify-content: space-around;
 }
 table{
+    width:80%;
+    margin-left:20%;
     margin-top: 50px;
     margin-bottom: 50px;
+}
+.handleError{
+    width:80%;
+    margin-left:20%;
+    margin-top: 50px;
+}
+
+jw-pagination{
+    display: flex;
+    padding-left: 0;
+    justify-content: center !important;
 }
